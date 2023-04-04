@@ -1,0 +1,56 @@
+<br/>
+<div class="row">
+    <div class="col-md-3">
+        <%= render "room_menu" %>
+    </div>
+    <div class="col-md-9">
+
+        <div class="row">
+            <div class="col-sm-9">
+                <br/>
+                <div class="card text-center">
+                    <h4 class="card-header text-center">お部屋の写真登録</h4>
+                    <div class="card-body" style="margin-left: 50px;">
+                        <br/>
+
+                        <div class="dropzone" id ="myDropzone" style="height:200px; width:60px;" action="/rooms/<%= @room.id %>/upload__photo">
+                        </div>
+                        <br/>
+                        <div class="container" style="margin-left: 20px;">
+                            <div class="row">
+
+                                <% @room.photos.each do |photo| %>
+
+                                    <div class="col-md-3">
+                                        <figure>
+                                            <%= image_tag url_for(photo), style: "width: 100%;" %>
+                                        </figure>
+
+                                        <%= link_to "削除", delete_photo_room_url(photo_id: photo.id, id: @room.id),
+                                                method: :delete,
+                                                data: { confirm: "本当に削除しますか?"},
+                                                style: "z-index: 100; margin-top: -15px; margin-bottom: 20px; font-size: 10px;",
+                                                class: "btn btn-outline-danger btn-sm" %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    Droozone.options.myDropzone = {
+        paramName: "file",
+        maxFilesize: 2,
+        acceptedFiles: "image/*",
+        init: function() {
+            this.on("complete", function(file) {
+                location.reload();
+            })
+        }
+    }
+</script>

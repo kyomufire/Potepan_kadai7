@@ -1,0 +1,49 @@
+<br/>
+<%= csrf_meta_tags %>
+
+<div class="col-sm-5" style="margin:0 auto;">
+    <div class="card text-center"><br/>
+
+        <h1 class="card-header text-center">設定</h1>
+        <div class="text-center"><br/>
+
+            <h2 class="card-footer text-center">プロフィール情報</h2>
+                <div class="card-body">
+                    <%= image_tag avatar_url(current_user) %>
+                    <a data-toggle="collapse" href="#collapseExample3">
+                        <br/>
+                        <br/>
+                            <button type="button" class="btn btn-info btn-block"><i class="fas fa-upload"></i>アバター画像アップロード</button>
+                    </a>
+                        <br/>
+                        <div class="collapse" id="collapseExample3">
+                            <%= form_with model:current_user, url:users_edit_url(current_user), method: :post, multipart: true, data:{turbo:false} do |f| %>
+                            <%= f.file_field :avatar, onchange: "this.form.submit();" %>
+                            <% end %>
+                        </div>
+                        <br/>
+                </div>
+                <hr/>
+
+                <div>自己紹介<br><br>
+                    <%= current_user.about %>
+                </div>
+                <br>
+                <a data-toggle="collapse">
+                    <i class="toggle far fa-edit"></i>編集</a>
+                <div class="content">
+                    <%= form_with model: current_user, url: users_edit_url(current_user), method: :post, id: 'user-about', class: 'is-hidden' do |f| %>
+                        <div class="field">
+                            <%= f.text_area :about, autofocus: true, autocomplete: 'form', class: 'input'%>
+                        </div>
+
+                        <%= link_to "キャンセル", "account" %>
+                        <%= f.submit "保存", class: "btn btn-success btn-block"%>
+                    <% end %>
+                    <br/>
+
+                </div>
+        </div>
+    </div>
+</div>
+<br/>

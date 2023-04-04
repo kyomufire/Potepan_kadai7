@@ -1,0 +1,33 @@
+<br/>
+<div class="col-sm-5" style="margin:0 auto;">
+    <div class="card text-center"><br/>
+        <h1 class="card-header text-center">設定</h1>
+        <hr/>
+
+        <h2 class="card-header text-center">アカウント情報</h2>
+            <div class="card-body">
+                <h5 class="card-title btn-block" style="margin-left: 15px; margin-top: 10px;">アカウント名：<%= current_user.full_name %></h5>
+                <h5 class="card-title btn-block" style="margin-left: 15px; margin-top: 10px;">メールアドレス：<%= current_user.email %></h5>
+                <h5 class="card-title btn-block" style="margin-left: 15px; margin-top: 10px;">パスワード：*********</h5>
+                <br/>
+                <i class="fa-solid fa-user-pen"></i>
+                    <%= link_to "登録情報編集", edit_user_registration_path %>
+            </div>
+        <hr/>
+
+        <div class="text-center"><br/>
+            <h2 class="card-footer text-center">プロフィール情報</h2>
+                <div class="card-body">
+                    <%= image_tag avatar_url(current_user), class: "img-fluid img-thumbnail rounded-pill" %>
+                    <h5 class="card-title btn-block" style="margin-left: 15px; margin-top: 10px;">プロフィール画像</h5>
+                    <h5 class="card-title btn-block" style="margin-left: 15px; margin-top: 10px;">自己紹介：<%= current_user.about %></h5>
+                    <br/>
+                    <i class="fa-solid fa-user-pen"></i>
+                        <%= link_to "プロフィール情報編集", dashboard_path %>
+                    <br/>
+                    <br/>
+                </div>
+        </div>
+    </div>
+</div>
+<br/>

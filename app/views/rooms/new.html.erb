@@ -1,0 +1,60 @@
+<br/>
+<div class="col-sm-5" style="margin:0 auto;">
+    <div class="card text-center"><br/>
+        <h2 class="card-header text-center">新規登録</h2>
+        <div class="card-body">
+            <br/>
+
+                <%= form_with(model: @room, method: :post, multipart: true, data:{turbo:false}) do |f| %>
+
+                <%= render "shared/error", obj:@room %>
+
+                    <div class="form-group">
+                        <%= f.label :施設名, class: "label" %><br />
+                        <%= f.text_field :room_type, size: 23  %>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <%= f.label :施設説明, class: "label" %><br />
+                        <%= f.text_area :summary %>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <%= f.label :料金（一泊あたり）, class: "label" %><br />
+                        <%= f.text_field :price, size: 23  %>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <%= f.label :住所, class: "label" %><br />
+                        <%= f.text_area :address %>
+                    </div>
+                    <br/>
+
+<!--                    <div class="field">
+                        <%= f.label :施設画像 %>
+                        <br />
+                        <%= f.file_field :photos, multiple: true, direct_upload: true, data: { target: "room.photoUpload" } %>
+                    </div>
+-->
+
+                    <div id="photo-preview" data-target="room.preview">
+                        <% if @room.photos.attached? %>
+                        <% @room.photos.each do |photo| %>
+                            <div class="photo">
+                                <%= image_tag photo.variant(resize: "100x100") %>
+                            </div>
+                            <% end %>
+                        <% end %>
+                    </div>
+
+                    <br/>
+                    <div><%= f.submit "登録する", class: "btn btn-primary btn-block" %></div>
+                    <br/>
+                <% end %>
+        </div>
+    </div>
+</div>
+<br/>

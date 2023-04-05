@@ -13,12 +13,6 @@ class Room < ApplicationRecord
   validates :price, presence: true
   validates :address, presence: true
 
-  def room
-    if self.images.attached?
-      self.images.first
-    end
-  end
-
   def self.ransackable_associations(auth_object = nil)
     ["images", "reservations", "user"]
   end

@@ -25,14 +25,10 @@
                     <tr>
 
                         <td>
-                            <% if room %>
-                            <%= link_to room_path(room), data: { turbolinks: false} do %>
-                            <% if room.avatar.attached? %>
-                            <%= image_tag room.avatar, style: "width: 230px;" %><br/>
+                            <% if room.photos.attached? %>
+                            <%= image_tag room.photos.first, style: "width: 230px;" %><br/>
                             <% else %>
                             <%= image_tag "default_image_room.png", style: "width: 230px;" %>
-                            <% end %>
-                            <% end %>
                             <% end %>
                         </td>
 

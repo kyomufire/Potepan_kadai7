@@ -17,13 +17,9 @@ class RoomsController < ApplicationController
   def create
     @room = current_user.rooms.build(room_params)
     if @room.save
-      if params[:room][:photos].blank?
-        @room.photos.attach(io: File.open(Rails.root.join("app", "assets", "images", "default-room_image.png")), filename: "default-room_image.png", content_type: "image/png")
-      end
+
       flash[:notice]= "保存しました。"
       redirect_to root_path
-    else
-      render :new
     end
   end
 
@@ -82,7 +78,7 @@ class RoomsController < ApplicationController
     end
 
     def room_params
-      params.require(:room).permit(:room_type, :listing_name, :summary, :price, :address, :active, :description, :avatar, :image, photos: [] )
+      params.require(:room).permit(:room_type, :listing_name, :summary, :price, :address, :active, :description, :avatar, :image, :photos )
     end
 
     def authorize_user

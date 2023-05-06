@@ -14,7 +14,7 @@
                                         <p>チェックイン: <%= I18n.l(@reservation.start_date, format: :full_date) %></p>
                                     </tr>
                                     <tr>
-                                        <p>チェックアウト: <%= I18n.l(@reservation.end_date, format: :full_date)  %></td>
+                                        <p>チェックアウト: <%= I18n.l(@reservation.end_date, format: :full_date) %></td>
                                     </tr>
                                     <tr>
                                         <p>宿泊日数: <%= (@reservation.end_date.to_date - @reservation.start_date.to_date).to_i %> 泊</p>

@@ -1,48 +1,49 @@
 <div>
-    <h2>Potepan Yoyakuで<br/>
-    まだ体験したことのない<br/>
-    旅をしよう</h2>
+  <h2>
+    Potepan Yoyakuで<br />
+    まだ体験したことのない<br />
+    旅をしよう
+  </h2>
 </div>
 
-<div class="now" style="padding: 50px;">
-    <div id="collspsePanel">
-        <%= search_form_for @search, url:search_path, remote:true do |f| %>
-            <div class="row">
-                <div class="col-md-5">
-                    <label>住所・キーワード</label>
-                    <%= f.label :address_or_room_type_or_summary_cont, "検索" %>
-                    <%= f.search_field :address_or_room_type_or_summary_cont, class: "form-control", placeholder: "エリア名を入力" %>
-                </div>
-                <div class=" col-md-4">
-                    <br/>
-                    <%= f.submit "検索", class: "btn btn-primary btn-block" %>
-                </div>
-            </div>
-        <% end %>
+<div class="now" style="padding: 50px">
+  <div id="collspsePanel">
+    <%= search_form_for @search, url:search_path, remote:true do |f| %>
+    <div class="row">
+      <div class="col-md-5">
+        <label>住所・キーワード</label>
+        <%= f.label :address_or_room_type_or_summary_cont, "検索" %> <%= f.search_field :address_or_room_type_or_summary_cont, class: "form-control", placeholder: "エリア名を入力" %>
+      </div>
+      <div class="col-md-4">
+        <br />
+        <%= f.submit "検索", class: "btn btn-primary btn-block" %>
+      </div>
     </div>
+    <% end %>
+  </div>
 </div>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <style>
-    h2 {
+  h2 {
     color: #364e96;
     padding: 0.3em 0;
     margin-top: 0.3em;
     border-top: solid 3px #364e96;
     border-bottom: solid 3px #364e96;
-    margin-left:50px;
+    margin-left: 50px;
     width: 400px;
-    }
+  }
 </style>

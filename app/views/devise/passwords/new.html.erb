@@ -1,23 +1,21 @@
-<br/>
-<div class="col-sm-5" style="margin:0 auto;">
-  <div class="card text-center"><br/>
+<br />
+<div class="col-sm-5" style="margin: 0 auto">
+  <div class="card text-center">
+    <br />
     <h2 class="card-header text-center">パスワードを忘れた場合</h2>
     <div class="card-body">
-      <br/>
+      <br />
 
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %> <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力" %>
-        </div>
-        <br/>
+      <div class="field">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力" %>
+      </div>
+      <br />
 
-        <div class="actions">
-          <%= f.submit "再設定用メールを送信" %>
-        </div>
-        <br/>
+      <div class="actions"><%= f.submit "再設定用メールを送信" %></div>
+      <br />
       <% end %>
 
       <p>メールに記載されているリンクをクリックし、パスワードの再設定を行ってください</p>

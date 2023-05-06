@@ -22,5 +22,4 @@ class Reservation < ApplicationRecord
       0
     end
   end
-
-end 
+end

@@ -6,8 +6,7 @@
     <div class="card-body">
       <br />
 
-      <%= form_with(model: @room, method: :post, multipart: true,
-      data:{turbo:false}) do |f| %> <%= render "shared/error", obj:@room %>
+      <%= form_with(model: @room, method: :post, multipart: true, data:{turbo:false}) do |f| %> <%= render "shared/error", obj:@room %>
 
       <div class="form-group">
         <%= f.label :施設名, class: "label" %><br />

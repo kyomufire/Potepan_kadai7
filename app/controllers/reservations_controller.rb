@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.find(params[:id])
         @reservation.total_price
         @reservation.save
-        end
+    end
 
     def update
         @reservation = Reservation.find(params[:id])

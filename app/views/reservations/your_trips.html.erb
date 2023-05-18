@@ -25,12 +25,14 @@
         <% end %> <% @trips.each do |trip| %>
         <tr>
           <td>
-            <% if trip.room %> <%= link_to room_path(trip.room), data: { turbolinks: false} do %>
-            <% if trip.room.photos.attached? %> <%= image_tag trip.room.photos.first, style: "width: 230px;" %><br />
-            <% else %> 
-            <%= image_tag "default_image_room.png", style: "width: 230px;" %> 
-            <% end %> 
-            <% end %> 
+            <% if trip.room %>
+              <%= link_to room_path(trip.room), data: { turbolinks: false} do %>
+                <% if trip.room.photos.attached? %>
+                  <%= image_tag trip.room.photos.first, style: "width: 230px;" %><br>
+                <% else %> 
+                  <%= image_tag "default_image_room.png", style: "width: 230px;" %> 
+                <% end %> 
+              <% end %> 
             <% end %>
           </td>
 

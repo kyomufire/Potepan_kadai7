@@ -1,0 +1,58 @@
+<div class="row" style="margin-top: 50px; margin-left: 30px">
+  <div class="card">
+    <h3 style="margin-top: 30px; margin-left: 30px">予約一覧</h3>
+    <br />
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>施設画像</th>
+          <th>施設名</th>
+          <th>紹介文</th>
+          <th>人数</th>
+          <th>合計金額</th>
+          <th>チェックイン</th>
+          <th>チェックアウト</th>
+          <th>予約確定日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @trips.blank? %>
+        <tr>
+          <td colspan="7" class="has-text-cenrered">
+            <h1>表示できるご予約はありません。</h1>
+          </td>
+        </tr>
+        <% end %> <% @trips.each do |trip| %>
+        <tr>
+          <td>
+            <% if trip.room %>
+              <%= link_to room_path(trip.room), data: { turbolinks: false} do %>
+                <% if trip.room.photos.attached? %>
+                  <%= image_tag trip.room.photos.first, style: "width: 230px;" %><br>
+                <% else %> 
+                  <%= image_tag "default_image_room.png", style: "width: 230px;" %> 
+                <% end %> 
+              <% end %> 
+            <% end %>
+          </td>
+
+          <td><%= link_to trip.room.room_type, room_path(trip.room), data: { turbolinks: false} %></td>
+
+          <td><%= trip.room.summary %></td>
+
+          <td><%= trip.number_of_guests %> 人</td>
+
+          <td><%= number_to_currency(trip.total_price) %></td>
+
+          <td><%= I18n.l(trip.start_date, format: :full_date) %></td>
+
+          <td><%= I18n.l(trip.end_date, format: :full_date) %></td>
+
+          <td><%= I18n.l(trip.created_at, format: :long) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br />

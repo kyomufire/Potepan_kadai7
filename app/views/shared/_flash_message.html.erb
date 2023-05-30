@@ -1,0 +1,7 @@
+<% if controller_name == "sessions" || controller_name == "registrations" %>
+<div class="col-sm-2" style="margin: 0 auto">
+  <% flash.each do |key, value| %>
+  <p class="alert alert-<%= key %>"><%= value %></p>
+  <% end %>
+</div>
+<% end %>

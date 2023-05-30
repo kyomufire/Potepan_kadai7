@@ -38,3 +38,5 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.yarn/install-state.gz
+.yarn/cache/jquery-npm-3.6.3-cbc34d2330-0fd366bdca.zip

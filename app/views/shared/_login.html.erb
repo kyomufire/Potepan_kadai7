@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" style="z-index: 5">
+  <a class="navbar-brand" href="/"><h1 class="navh1">Potepan Yoyaku</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <% if (!user_signed_in?) %>
+      <li class="nav-item" style="margin-right: 20px; margin-bottom: 5px"><%= link_to "ログイン", new_user_session_path, class: "btn btn-light" %></li>
+      <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-light", style: "margin-right: 80px" %></li>
+
+      <% else %>
+      <li class="nav-item dropdown" style="margin-right: 100px">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%=image_tag avatar_url(current_user), class: "bd-placeholder-img figure-img img-fluid rounded-pill", style: "width: 40px; height:40px;" %> <%= current_user.full_name %></a
+        >
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 200px">
+          <span class="droodown-item"> <%= link_to "施設の新規登録", rooms_new_path, class: "btn btn-white" %></span><i class="fa-solid fa-bed"></i>
+          <hr />
+          <span class="droodown-item"> <%= link_to "予約済み一覧", your_trips_path, class: "btn btn-white" %><i class="fa-solid fa-list-check"></i> </span>
+          <span class="droodown-item"> <%= link_to "登録済み一覧", your_reservations_path, class: "btn btn-white" %><i class="fa-solid fa-list-check"></i> </span>
+          <span class="droodown-item"> <%= link_to "アカウント情報", account_path, class: "btn btn-white" %><i class="fa-solid fa-user-pen"></i> </span>
+          <hr />
+          <span class="dropdown-item"> <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-white" %><i class="fas fa-sign-out-alt"></i> </span>
+        </div>
+      </li>
+
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  h1 {
+    color: #364e96;
+    padding: 0.2em 0;
+    margin-left: 0.5em;
+    border-top: solid 3px #364e96;
+    border-bottom: solid 3px #364e96;
+    display: flex;
+    justify-content: flex-start;
+  }
+</style>
